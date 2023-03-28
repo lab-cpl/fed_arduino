@@ -12,7 +12,7 @@ os.system(showDevices)
 
 # auto choose sdb1 for now
 # later on implement a selection prompt
-mountDevices = 'sudo mount /dev/sdb1 ~/drive'
+mountDevices = 'sudo mount /dev/mmcblk0p1 ~/drive'
 lsMountDevices = 'ls ~/drive'
 lsExperimental = 'cat ~/drive/config.txt'
 mountPrompt = input("Code to run  " + mountDevices + "(y/n) : ")
@@ -44,7 +44,7 @@ if mountPrompt == 'y':
     createCommit = 'git commit -m "' + now + ' ' + animalNumber + '"'
     os.system(createCommit)
     # unmount micro sd
-    unmountSd = 'sudo umount /dev/sdb1'
+    unmountSd = 'sudo umount /dev/mmcblk0p1'
     os.system(unmountSd)
 else:
     print(":c")
