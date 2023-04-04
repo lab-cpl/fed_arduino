@@ -71,6 +71,7 @@ if (config.randomFeed == 0){
 
 // testing config, alway feed
 if (config.randomFeed == 3){
+	fedDelay = config.deliveryDelay[0];
 	deliver = true;
 }
 
