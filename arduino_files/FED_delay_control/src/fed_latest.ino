@@ -61,6 +61,9 @@ void setup() {
 
   // deliver 1 pellet to test functionallity
   feed();
+  feed();
+  feed();
+  feed();
   // shuffle feeding hours
   randFeedHours();
 }
