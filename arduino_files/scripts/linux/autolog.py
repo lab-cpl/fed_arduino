@@ -1,19 +1,17 @@
+# import libs
 import re
 import json
 import os
 from datetime import datetime
 
 
-# mount micro sd card
+###
+### SET DEFAULTS
+###
 
-# get home variable
-home = os.environ['HOME']
+os.system('lsblk')
 
-# show currect connected devices
-showDevices = 'lsblk'
-os.system(showDevices)
-
-# default device
+# default device name
 defaultDevice = 'mmcblk0p1'
 
 # if mounted device is under another name
@@ -25,14 +23,53 @@ if deviceNamePrompt == '':
 else:
     defaultDevice = deviceNamePrompt
 
+# set default mount point
+defaultMountPoint = 'drive'
+
+# if mount point is under another name
+mountPoint = input("write if mount point is not the default" + "default: " +
+                   defaultMountPoint + "... ")
+
+if mountPoint == '':
+    defaultMountPoint = defaultMountPoint
+else:
+    defaultMountPoint = mountPoint
+
+# this variable is re-defined when later on when microsd is opened
+animalNumber = '000'
+
+
+
+###
+### IMPORTANT COMMANDS
+###
+
+# get home variable
+home = os.environ['HOME']
+
+# show connected devices
+showDevices = 'lsblk'
+
+# create dir for raw data storage
+createDirectory = 'mkdir -p ../raw_data/' + animalNumber
+
+# show mounted devices in dev
+mountDevices = 'sudo mount /dev/' + defaultDevice + ' ~/drive'
+
+# list all files in the mounted drive
+lsMountDevices = 'ls ~/drive'
+
+# show experimental configuration
+lsExperimental = 'cat ~/drive/config.txt'
+
+
+
+
 
 print('Selected device name is: ' + defaultDevice)
 
 # later on implement a selection prompt
 # mmcblk0p1 corresponds to the micro sd adapter
-mountDevices = 'sudo mount /dev/' + defaultDevice + ' ~/drive'
-lsMountDevices = 'ls ~/drive'
-lsExperimental = 'cat ~/drive/config.txt'
 mountPrompt = input("Code to run  " + mountDevices + "(y/n) : ")
 
 if mountPrompt == 'y':
@@ -48,7 +85,6 @@ if mountPrompt == 'y':
     # animal number
     print(animalNumber)
     # create folder based on animal name if it does not exists
-    createDirectory = 'mkdir -p ../raw_data/' + animalNumber
     os.system(createDirectory)
     # copy animal data .CSV into the folder
     copyCSV = 'sudo cp ~/drive/' + animalNumber + '.CSV' + ' ../raw_data/' + animalNumber + '/'
