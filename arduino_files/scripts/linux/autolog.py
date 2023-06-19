@@ -12,7 +12,7 @@ from datetime import datetime
 os.system('lsblk')
 
 # default device name
-defaultDevice = 'mmcblk0p1'
+defaultDevice = 'sdb1'
 
 # if mounted device is under another name
 deviceNamePrompt = input("write if device name is not the default" + "default: "
