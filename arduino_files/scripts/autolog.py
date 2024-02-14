@@ -12,7 +12,7 @@ os.system(showDevices)
 
 # auto choose sdb1 for now
 # later on implement a selection prompt
-mountDevices = 'sudo mount /dev/sdb1 ~/drive'
+mountDevices = 'sudo mount /dev/sda1 ~/drive'
 lsMountDevices = 'ls ~/drive'
 lsExperimental = 'cat ~/drive/config.txt'
 mountPrompt = input("Code to run  " + mountDevices + "(y/n) : ")
@@ -30,10 +30,10 @@ if mountPrompt == 'y':
     # animal number
     print(animalNumber)
     # create folder based on animal name if it does not exists
-    createDirectory = 'mkdir -p ../raw_data/' + animalNumber
+    createDirectory = 'mkdir -p ./fed_data/raw_data/' + animalNumber
     os.system(createDirectory)
     # copy animal data .CSV into the folder
-    copyCSV = 'sudo cp ~/drive/' + animalNumber + '.CSV' + ' ../raw_data/' + animalNumber + '/'
+    copyCSV = 'sudo cp ~/drive/' + animalNumber + '.CSV' + ' ./fed_data/raw_data/' + animalNumber + '/'
     os.system(copyCSV)
     # git add file
     gitAdd = 'git add ../raw_data/' + animalNumber + '/'
@@ -44,7 +44,7 @@ if mountPrompt == 'y':
     createCommit = 'git commit -m "' + now + ' ' + animalNumber + '"'
     os.system(createCommit)
     # unmount micro sd
-    unmountSd = 'sudo umount /dev/sdb1'
+    unmountSd = 'sudo umount /dev/sda1'
     os.system(unmountSd)
 else:
     print(":c")

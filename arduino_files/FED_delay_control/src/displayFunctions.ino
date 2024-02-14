@@ -48,6 +48,18 @@ void displaySDError() {
   display.refresh();
 }
 
+void displayLogfileSize() {
+  display.clearDisplay();
+  display.setRotation(3);
+  display.setTextColor(BLACK);
+
+  display.setCursor(0, 10);
+  display.setTextSize(3);
+  display.println("Logfile size: ");
+  display.println(logfile.size());
+
+  display.refresh();
+}
 void displayFeed() {
   display.clearDisplay();
   display.setRotation(3);
@@ -120,6 +132,31 @@ void displayJam() {
   display.setCursor(40, 50);
   display.setTextSize(4);
   display.println("Clearing Jam");
+
+  display.refresh();
+}
+
+void displayMotorTurns() {
+  display.clearDisplay();
+  display.setRotation(3);
+  display.setTextColor(BLACK);
+  display.setCursor(0, 10);
+  display.setTextSize(3);
+  display.println("Motor turns: ");
+  display.println(motorTurns);
+  display.refresh();
+}
+
+void displayBoop(int count) {
+  display.clearDisplay();
+  display.setRotation(3);
+  display.setTextColor(BLACK);
+
+  display.setCursor(40, 50);
+  display.setTextSize(4);
+  char msg[30];
+  sprintf(msg,"Boop: %02d", count);
+  display.println(msg);
 
   display.refresh();
 }

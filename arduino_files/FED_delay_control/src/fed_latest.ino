@@ -60,10 +60,7 @@ void setup() {
   // read long delay info, stores variable values after reboot
 
   // deliver 1 pellet to test functionallity
-  feed();
-  feed();
-  feed();
-  feed();
+  setPellets();
   // shuffle feeding hours
   randFeedHours();
 }

@@ -13,15 +13,32 @@ void spin(){
   delay(500);
 }
 
+void setPellets() {
+  if (!pellet && !pelletJam) {
+    displayFeed();
+    for (int i = 0; i < 40 + random(0, 10); i++) {
+        queryPI();
+	delay(250);
+      if (!pellet) {
+        myMotor->step(100, BACKWARD, DOUBLE);
+        myMotor->step(100, FORWARD, DOUBLE);
+      }
+    }
+    myMotor->release();
+  }
+}
+
 
 void feed() {
   if (!pellet && !pelletJam) {
     displayFeed();
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 20 + random(0, 10); i++) {
         queryPI();
+	delay(10);
       if (!pellet) {
-        myMotor->step(50, FORWARD, DOUBLE);
-        myMotor->step(25, BACKWARD, DOUBLE);
+        myMotor->step(7, BACKWARD, DOUBLE);
+        myMotor->step(14, FORWARD, DOUBLE);
+	delay(50);
       }
     }
     myMotor->release();
@@ -50,11 +67,13 @@ void clearJam(){
 // if fails 5 attempts to deliver pellet it makes a spin
   if (!pellet){
     displayFeedCounter();
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 20 + random(0, 10); i++) {
         queryPI();
+	delay(10);
       if (!pellet) {
-        myMotor->step(50, BACKWARD, DOUBLE);
-        myMotor->step(25, FORWARD, DOUBLE);
+        myMotor->step(7, FORWARD, DOUBLE);
+        myMotor->step(14, BACKWARD, DOUBLE);
+	delay(50);
       }
     }
   }
