@@ -15,7 +15,7 @@ void spin(){
 
 void setPellets() {
   if (!pellet && !pelletJam) {
-    displayFeed();
+    displaySetPellets();
     for (int i = 0; i < 40 + random(0, 10); i++) {
         queryPI();
 	delay(250);

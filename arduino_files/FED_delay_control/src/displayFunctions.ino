@@ -8,13 +8,14 @@ void displayExperimentInfo() {
   char experimentalInfo[80];
   unsigned long epoch = rtc.getEpoch();
   sprintf(experimentalInfo,
-  "Animal: %02d\n\Cond: %s\nTime: %02d:%02d:%02d\nPellets: %02d\nBattery: %d\nRandomFeed: %d",
+  "Animal: %02d\n\Cond: %s\nTime: %02d:%02d:%02d\nPellets: %02d\nBoops: %02d\nBattery: %d\nRandomFeed: %d",
   config.animal,
   config.protocol,
   hour(epoch),
   minute(epoch),
   second(epoch),
   pelletCount,
+  boopCount,
   batt,
   config.randomFeed
   );
@@ -60,6 +61,7 @@ void displayLogfileSize() {
 
   display.refresh();
 }
+
 void displayFeed() {
   display.clearDisplay();
   display.setRotation(3);
@@ -68,6 +70,18 @@ void displayFeed() {
   display.setCursor(0, 10);
   display.setTextSize(3);
   display.println("Feeding...");
+
+  display.refresh();
+}
+
+void displaySetPellets() {
+  display.clearDisplay();
+  display.setRotation(3);
+  display.setTextColor(BLACK);
+
+  display.setCursor(0, 10);
+  display.setTextSize(3);
+  display.println("Fixing up pellet position...");
 
   display.refresh();
 }
