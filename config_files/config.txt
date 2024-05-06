@@ -1,0 +1,9 @@
+{
+	"protocol": "baseline",
+	"animal": 000,
+	"longDelay": 15,
+	"longDelayCount": 6,
+	"deliveryDelay": [1,1,1,1,1,1],
+	"lastLongDelay": 0,
+	"randomFeed": 1
+}

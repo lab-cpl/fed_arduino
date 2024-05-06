@@ -1,0 +1,14 @@
+import os
+import pyfiglet
+
+
+print(pyfiglet.figlet_format("FED CLOCK SYNC"))
+cmdClock = 'sudo pio run -d ~/repos_sync/fed_arduino/arduino_files/FED_set_clock -t upload'
+os.system(cmdClock)
+print(pyfiglet.figlet_format("CLOCK SYNC DONE!"))
+
+print(pyfiglet.figlet_format("FED DELAY CONTROL"))
+cmdDelayControl = 'sudo pio run -d ~/repos_sync/fed_arduino/arduino_files/FED_delay_control -t upload'
+os.system(cmdDelayControl)
+print(pyfiglet.figlet_format("DELAY CONTROL UPLOADED!"))
+
